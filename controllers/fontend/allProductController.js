@@ -7,7 +7,7 @@ const { ObjectID } = require("bson");
 const Product = mongoose.model("Product");
 
 router.get("/category/", (req, res) => {
-  res.render("main/all-product")
+  res.render("main/client/all-product")
 });
 
 router.get("/all-product-by-category", async (req, res) => {

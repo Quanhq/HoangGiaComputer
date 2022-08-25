@@ -7,7 +7,7 @@ const Category = mongoose.model("Category");
 
 
 router.get('/', (req, res) => {
-  res.render('main/homepage')
+  res.render('main/client/homepage')
 })
 
 router.get("/category/get-all-category", async (req, res) => {

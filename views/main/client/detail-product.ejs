@@ -181,7 +181,7 @@
                                 <div class="product">
                                     <div class="product-image">
                                         <div class="image"><a href="detail.html"><img
-                                                    src="/assets/images/products/p1.jpg" alt=""></a></div>
+                                                    src="/images/products/p1.jpg" alt=""></a></div>
                                         <div class="tag sale"><span>sale</span></div>
                                     </div>
                                     <div class="product-info text-left">
@@ -215,7 +215,7 @@
                                 <div class="product">
                                     <div class="product-image">
                                         <div class="image"><a href="detail.html"><img
-                                                    src="/assets/images/products/p2.jpg" alt=""></a></div>
+                                                    src="/images/products/p2.jpg" alt=""></a></div>
                                         <div class="tag sale"><span>sale</span></div>
                                     </div>
                                     <div class="product-info text-left">
@@ -249,7 +249,7 @@
                                 <div class="product">
                                     <div class="product-image">
                                         <div class="image"><a href="detail.html"><img
-                                                    src="/assets/images/products/p3.jpg" alt=""></a></div>
+                                                    src="/images/products/p3.jpg" alt=""></a></div>
                                         <div class="tag hot"><span>hot</span></div>
                                     </div>
                                     <div class="product-info text-left">
@@ -283,7 +283,7 @@
                                 <div class="product">
                                     <div class="product-image">
                                         <div class="image"><a href="detail.html"><img
-                                                    src="/assets/images/products/p4.jpg" alt=""></a></div>
+                                                    src="/images/products/p4.jpg" alt=""></a></div>
                                         <!-- /.image -->
                                         <div class="tag new"><span>new</span></div>
                                     </div><!-- /.product-image -->
@@ -318,8 +318,8 @@
                             <div class="products">
                                 <div class="product">
                                     <div class="product-image">
-                                        <div class="image"><a href="detail.html"><img src="/assets/images/blank.gif"
-                                                    data-echo="/assets/images/products/p5.jpg" alt=""></a></div>
+                                        <div class="image"><a href="detail.html"><img src="/images/blank.gif"
+                                                    data-echo="/images/products/p5.jpg" alt=""></a></div>
                                         <!-- /.image -->
                                         <div class="tag hot"><span>hot</span></div>
                                     </div><!-- /.product-image -->
@@ -354,8 +354,8 @@
                             <div class="products">
                                 <div class="product">
                                     <div class="product-image">
-                                        <div class="image"><a href="detail.html"><img src="/assets/images/blank.gif"
-                                                    data-echo="/assets/images/products/p6.jpg" alt=""></a></div>
+                                        <div class="image"><a href="detail.html"><img src="/images/blank.gif"
+                                                    data-echo="/images/products/p6.jpg" alt=""></a></div>
                                         <!-- /.image -->
                                         <div class="tag new"><span>new</span></div>
                                     </div><!-- /.product-image -->
@@ -477,7 +477,7 @@
 
                 $('#descrip-product').html(product.describe)
                 $('#descrip-name-product').html(product.productName)
-                $('#descrip-image-product').attr("src", "/assets/images/product/" + product.image[0]);
+                $('#descrip-image-product').attr("src", "/images/product/" + product.image[0]);
 
 
                 let arrImg = product.image
@@ -486,13 +486,13 @@
 
                 for (let i = 0; i < arrImg.length; i++) {
                     $('#box-detal-show').append(`
-                    <img src="/assets/images/product/${arrImg[i]}"
+                    <img src="/images/product/${arrImg[i]}"
                                                     alt="shoe image">
                     `)
                     $('#box-detal-list').append(`
                     <div class="img-item">
                                             <a href="#" data-id="${i + 1}">
-                                                <img src="/assets/images/product/${arrImg[i]}"
+                                                <img src="/images/product/${arrImg[i]}"
                                                     alt="shoe image">
                                             </a>
                                         </div>
@@ -521,7 +521,7 @@
                                 <div class="product" style="width : 207px">
                                     <div class="product-image">
                                         <div class="image"><a href="#"><img
-                                                    src="/assets/images/product/${product.image[0]}" alt=""></a></div>
+                                                    src="/images/product/${product.image[0]}" alt=""></a></div>
                                     </div>
                                     <div class="product-info text-left">
                                         <h3 class="name"><a href="#">${product.productName}</a></h3>
@@ -582,7 +582,7 @@
         text-transform: uppercase;
         font-size: 15px;
         font-weight: 500;
-        background: #4d4d4d url(/assets/images/b.png) no-repeat 10px center;
+        background: #4d4d4d url(/images/b.png) no-repeat 10px center;
         margin-bottom: 0;
     }
 
@@ -607,7 +607,7 @@
     }
 
     .box2_saleme ul li:nth-child(1) {
-        background: url(/assets/images/c.gif)0px 2px no-repeat;
+        background: url(/images/c.gif)0px 2px no-repeat;
     }
 
     .box2_saleme ul li:last-child {
@@ -615,7 +615,7 @@
     }
 
     .box2_saleme ul li:nth-child(2) {
-        background: url(/assets/images/h.png)0px 1px no-repeat;
+        background: url(/images/h.png)0px 1px no-repeat;
     }
 
     .box1_saleme {

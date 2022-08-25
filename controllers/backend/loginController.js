@@ -9,7 +9,7 @@ const authService = require("../../service/authentication/authenticationService"
 
 // router login
 router.get("/admin/login", (req, res) => {
-    res.render("main/login",{ title: 'Log In',layout:'./layouts/containerLogin' });
+    res.render("main/admin/login",{ title: 'Log In',layout:'./layouts/containerLogin' });
 })
 
 // router check login

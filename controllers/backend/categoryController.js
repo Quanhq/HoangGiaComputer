@@ -7,7 +7,7 @@ const Product = mongoose.model("Product");
 const { ObjectID } = require("bson");
 
 router.get('/admin/category', (req, res) => {
-    res.render('main/category', { layout: './layouts/containerAdmin' })
+    res.render('main/admin/category', { layout: './layouts/containerAdmin' })
 })
 
 // Thêm

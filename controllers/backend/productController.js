@@ -12,7 +12,7 @@ const { ObjectID } = require("bson");
 let arrayImage = [];
 
 router.get("/admin/product", (req, res) => {
-  res.render("main/list-product", { layout: "./layouts/containerAdmin" });
+  res.render("main/admin/list-product", { layout: "./layouts/containerAdmin" });
 });
 
 router.get("/admin/product/get-all-product", async (req, res) => {
@@ -22,7 +22,7 @@ router.get("/admin/product/get-all-product", async (req, res) => {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/assets/images/product/");
+    cb(null, "public/images/product/");
   },
 
   filename: function (req, file, cb) {
@@ -42,9 +42,6 @@ router.post(
     product.productName = req.body.productName;
     product.categoryName = req.body.categoryName;
     product.price = req.body.price;
-    product.origin = req.body.origin;
-    product.color = req.body.color;
-    product.thickness = req.body.thickness;
     product.discount = req.body.discount;
     product.describe = req.body.describe;
     product.image = arrayImage;

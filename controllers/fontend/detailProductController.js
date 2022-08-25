@@ -7,7 +7,7 @@ const { ObjectID } = require("bson");
 const Product = mongoose.model("Product");
 
 router.get("/detail-product/", (req, res) => {
-  res.render("main/detail-product")
+  res.render("main/client/detail-product")
 });
 
 router.get("/get-product-detail", async (req, res) => {

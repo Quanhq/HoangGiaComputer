@@ -6,7 +6,7 @@ const User = mongoose.model("User");
 
 
 router.get('/user/setting', (req, res) => {
-  res.render('main/userSetting')
+  res.render('main/client/userSetting')
 })
 
 router.get("/user/get-user", async (req, res) => {

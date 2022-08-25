@@ -5,7 +5,7 @@ var router = express.Router();
 // const Post = mongoose.model("Post");
 
 router.get('/admin', (req, res) => {
-  res.render('main/dashboard',{ layout:'./layouts/containerAdmin' })
+  res.render('main/admin/dashboard',{ layout:'./layouts/containerAdmin' })
 })
 
 module.exports = router;
