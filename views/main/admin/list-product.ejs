@@ -73,14 +73,10 @@
 						<textarea name="information" id="editor-information"></textarea>
 					</div>
 
-
-
-
 					<div class="form-group">
 						<label>Mô Tả</label>
 						<textarea name="describe" id="editor"></textarea>
 					</div>
-
 
 					<div hidden class="form-group">
 						<label>Mô Tả</label>
@@ -105,35 +101,59 @@
 	</div>
 </div>
 <!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
-	<div class="modal-dialog">
+<div id="editEmployeeModal" style="margin-top: 50px" class="modal fade">
+	<div class="modal-dialog modal-xl" style="max-width:1250px;">
 		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h4 class="modal-title">Edit Employee</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				</div>
+			<div class="modal-header">
+				<h4 class="modal-title">Chỉnh Sửa Sản Phẩm</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<form action="/admin/product/edit-product" method="POST">
 				<div class="modal-body">
+					<input hidden type="text" name="productId" id="edit-id-product" class="form-control" required>
 					<div class="form-group">
-						<label>Name</label>
-						<input type="text" class="form-control" required>
+						<label>Tên Sản Phẩm</label>
+						<input id="edit-name-product" name="productName" type="text" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Email</label>
-						<input type="email" class="form-control" required>
+						<label>Tên Danh Mục</label>
+						<input id="edit-category-product" name="categoryName" type="text" class="form-control" readonly>
+					</div>
+
+					<div class="form-group">
+						<label>Giá</label>
+						<input id="edit-price-product" name="price" type="number" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>Address</label>
-						<textarea class="form-control" required></textarea>
+						<label>Giảm Giá</label>
+						<input id="edit-discount-product" name="discount" type="number" class="form-control" required>
 					</div>
+
 					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" class="form-control" required>
+						<label>Thông Số Kỹ Thuật</label>
+						<textarea name="information" id="edit-editor-information"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label>Mô Tả</label>
+						<textarea name="describe" id="edit-editor"></textarea>
+					</div>
+
+					<div class="form-group">
+						<label>Ngày Thêm Sản Phẩm</label>
+						<textarea id="edit-date-product" name="dateCreate" class="form-control" required></textarea>
+					</div>
+
+					<div class="form-group">
+						<label>Ảnh</label>
+						<!-- <input id="edit-image-product" name="multi-files" type='file' accept='image/*' multiple> -->
+						<div id="edit-box-image" class="box-add-image"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+					<!-- <input type="submit" onclick="editProduct()" class="btn btn-info" value="Save"> -->
+					<input type="submit" class="btn btn-success" value="Save Edit">
 				</div>
 			</form>
 		</div>
@@ -164,10 +184,10 @@
 	</div>
 </div>
 <script>
-
-</script>
-<script>
 	let valueDescription
+	let valueEditInformation
+	let valueEditdescription
+
 	ClassicEditor
 		.create(document.querySelector('#editor'))
 		.then(editor => {
@@ -179,6 +199,24 @@
 	ClassicEditor
 		.create(document.querySelector('#editor-information'))
 		.then(editor => {
+		})
+		.catch(error => {
+			console.error(error);
+		});
+
+	ClassicEditor
+		.create(document.querySelector('#edit-editor'))
+		.then(editor => {
+			valueEditdescription = editor
+		})
+		.catch(error => {
+			console.error(error);
+		});
+
+	ClassicEditor
+		.create(document.querySelector('#edit-editor-information'))
+		.then(editor => {
+			valueEditInformation = editor
 		})
 		.catch(error => {
 			console.error(error);
@@ -218,6 +256,8 @@
 						<td>${data[i].discount}</td>
 						<td>${data[i].dateCreate}</td>
 						<td>
+							<a href="#editEmployeeModal" onclick="showModalEdit('${data[i]._id}')" data-toggle="modal" class="edit"><i class="material-icons"
+                                   title="Edit">&#xE254;</i></a>
 							<a href="#deleteProductModal" onclick="showModelDelete('${data[i]._id}')" class="delete" data-toggle="modal"><i class="material-icons"
 									data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
@@ -269,52 +309,35 @@
 		$('.box-add-image').empty()
 	}
 
-	function addProduct() {
 
-		// let arrayfileImage = $('#add-image-product').prop('files')
-		// let productName = $('#add-name-product').val()
-		// let categoryName = $('#add-category-product option:selected').text()
-		// let price = $('#add-price-product').val()
-		// let origin = $('#add-origin-product').val()
-		// let color = $('#add-color-product').val()
-		// let thickness = $('#add-thickness-product').val()
-		// let discount = $('#add-discount-product').val()
-		// let describe = $('#add-describe-product').val()
-		// let arrImg = document.querySelectorAll('.box-add-image img')
-		// let arrUploadImage = ['https://tamtrinhstone.com/wp-content/uploads/2020/02/da-hoa-cuong-op-cot.jpg']
+	function showModalEdit(id) {
+		$.ajax({
+			type: 'GET',
+			url: '/admin/get-product-detail',
+			data: { id: id },
+			success: function (data) {
+				console.log(data);
+				$('#edit-id-product').val(data._id)
+				$('#edit-name-product').val(data.productName)
+				$('#edit-category-product').val(data.categoryName)
+				$('#edit-price-product').val(data.price)
+				$('#edit-discount-product').val(data.discount)
+				$('#edit-date-product').val(data.dateCreate)
+				$('#edit-box-image').empty()
+				for (let i = 0; i < data.image.length; i++) {
+					$('#edit-box-image').append(`<img src="/images/product/${data.image[i]}" height="150">`)
+				}
+				valueEditInformation.setData(data.information);
+				valueEditdescription.setData(data.describe);
 
-		// // for (let i = 0; i < arrImg.length; i++) {
-		// // 	arrUploadImage.push(arrImg[i].src)
-		// // }
-		// let dateCreate = new Date().toLocaleDateString();
-		// $.ajax({
-		// 	type: 'POST',
-		// 	url: '/admin/product/add-product',
-		// 	data: {
-		// 		productName: productName,
-		// 		categoryName: categoryName,
-		// 		price: price,
-		// 		origin: origin,
-		// 		color: color,
-		// 		thickness: thickness,
-		// 		discount: discount,
-		// 		describe: describe,
-		// 		image: arrayfileImage,
-		// 		dateCreate: dateCreate
-		// 	},
+			},
+			error: function (err) {
+				console.log(err);
+			}
+		});
 
-		// 	success: function (data) {
-		// 		console.log(data);
-		// 		getAllCProduct()
-		// 	},
-		// 	complete: function (data) {
-		// 		console.log(data);
-		// 	},
-		// 	error: function (err) {
-		// 		console.log(err);
-		// 	}
-		// });
 	}
+
 	function readFile() {
 
 		if (this.files) {

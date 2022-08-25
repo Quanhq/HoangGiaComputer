@@ -6,6 +6,7 @@ const Category = mongoose.model("Category");
 const Product = mongoose.model("Product");
 const multer = require("multer");
 const path = require("path");
+var fs = require("fs");
 
 const { ObjectID } = require("bson");
 
@@ -53,6 +54,28 @@ router.post(
   }
 );
 
+router.post("/admin/product/edit-product", async (req, res) => {
+  await Product.updateOne(
+    { _id: ObjectID(req.body.productId) },
+    {
+      $set: {
+        productName: req.body.productName,
+        price: req.body.price,
+        discount: req.body.discount,
+        information: req.body.information,
+        describe: req.body.describe,
+        dateCreate: req.body.dateCreate,
+      },
+    }
+  );
+  res.redirect("/admin/product");
+});
+
+router.get("/admin/get-product-detail", async (req, res) => {
+  let data = await Product.findOne({ _id: ObjectID(req.query.id) });
+  res.send(data);
+});
+
 router.get("/admin/category/edit-category", async (req, res) => {
   let categoryName = req.query.categoryName;
   let id = req.query.id;
@@ -65,6 +88,12 @@ router.get("/admin/category/edit-category", async (req, res) => {
 
 router.get("/admin/product/remove-product", async (req, res) => {
   let id = req.query.id;
+  let ObjImage = await Product.findOne({ _id: ObjectID(id) });
+  let arrayImage = ObjImage.image;
+  for (let i = 0; i < arrayImage.length; i++) {
+    let filePath = process.cwd() + "/public/images/product/" + arrayImage[i];
+    fs.unlinkSync(filePath);
+  }
   await Product.remove({ _id: ObjectID(id) });
   res.send("success");
 });
