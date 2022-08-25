@@ -63,23 +63,19 @@
 						<label>Giá</label>
 						<input id="add-price-product" name="price" type="number" class="form-control" required>
 					</div>
-					<!-- <div class="form-group">
-						<label>Xuất Xứ</label>
-						<input id="add-origin-product" name="origin" type="text" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Màu Sắc</label>
-						<input id="add-color-product" name="color" type="text" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label>Độ dày</label>
-						<input id="add-thickness-product" name="thickness" type="text" class="form-control" required>
-					</div> -->
-
 					<div class="form-group">
 						<label>Giảm Giá</label>
 						<input id="add-discount-product" name="discount" type="number" class="form-control" required>
 					</div>
+
+					<div class="form-group">
+						<label>Thông Số Kỹ Thuật</label>
+						<textarea name="information" id="editor-information"></textarea>
+					</div>
+
+
+
+
 					<div class="form-group">
 						<label>Mô Tả</label>
 						<textarea name="describe" id="editor"></textarea>
@@ -175,7 +171,14 @@
 	ClassicEditor
 		.create(document.querySelector('#editor'))
 		.then(editor => {
-			valueDescription = editor;
+		})
+		.catch(error => {
+			console.error(error);
+		});
+
+	ClassicEditor
+		.create(document.querySelector('#editor-information'))
+		.then(editor => {
 		})
 		.catch(error => {
 			console.error(error);

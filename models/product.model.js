@@ -10,6 +10,7 @@ var product = new mongoose.Schema({
   discount: {type: Number},
   describe: {type: String},
   dateCreate: {type: String},
+  information: {type: String},
 });
 
 mongoose.model("Product", product);

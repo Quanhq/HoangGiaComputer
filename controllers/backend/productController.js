@@ -43,6 +43,7 @@ router.post(
     product.categoryName = req.body.categoryName;
     product.price = req.body.price;
     product.discount = req.body.discount;
+    product.information = req.body.information;
     product.describe = req.body.describe;
     product.image = arrayImage;
     product.dateCreate = req.body.dateCreate;
