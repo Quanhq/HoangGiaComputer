@@ -378,6 +378,8 @@
     </div>
 </div>
 <script>
+    // $(document).ready(function () {
+    // })
     getAllProductByCategory();
     function getAllProductByCategory() {
         let countProduct = 0;
@@ -409,7 +411,7 @@
             </div>
             <div class="block-products-carousel__slider">
                 <div class="block-products-carousel__preloader"></div>
-                <div class="owl-carousel" id="item-category-${i}">
+                <div class="owl-carousel" id="item-category-${i}"> 
               
                 </div>
             </div>
@@ -418,19 +420,18 @@
 
 `);
                     for (let j = 0; j < arrProducts.length; j++) {
-                        let stringProduct = `
-                        <div class="block-products-carousel__cell">
+                        $("#item-category-" + i).append(`
+                            <div class="block-products-carousel__column">
+                                <div class="block-products-carousel__cell">
         <div class="product-card"><button class="product-card__quickview" type="button"><svg width="16px" height="16px">
                     <use xlink:href="images/sprite.svg#quickview-16"></use>
                 </svg> <span class="fake-svg-icon"></span></button>
             <div class="product-card__badges-list">
-                <div class="product-card__badge product-card__badge--hot">Hot</div>
             </div>
             <div class="product-card__image"><a href="/detail-product/?product=${arrProducts[j]._id}"><img src="/images/product/${arrProducts[j].image[0]}" alt=""></a>
             </div>
             <div class="product-card__info">
-                <div class="product-card__name"><a href="product.html">Undefined Tool IRadix
-                        DPS3000SY 2700 Watts</a></div>
+                <div class="product-card__name" title="${arrProducts[j].productName}" style="height: 54px;font-size: 15px;line-height: 19px;-ms-flex-positive: 1;flex-grow: 1;overflow: hidden;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 4;-webkit-box-orient: vertical;"><a href="/detail-product/?product=${arrProducts[j]._id}">${arrProducts[j].productName}</a></div>
                 <div class="product-card__rating">
                     <div class="rating">
                         <div class="rating__body"><svg class="rating__star rating__star--active" width="13px"
@@ -517,7 +518,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-card__rating-legend">11 Reviews</div>
+                    <div class="product-card__rating-legend">${Math.floor(Math.random() * 100)} Reviews</div>
                 </div>
                 <ul class="product-card__features-list">
                     <li>Speed: 750 RPM</li>
@@ -529,7 +530,8 @@
             </div>
             <div class="product-card__actions">
                 <div class="product-card__availability">Availability: <span class="text-success">In Stock</span></div>
-                <div class="product-card__prices">$1,019.00</div>
+                <div class="product-card__prices" style="text-decoration-line:line-through;height: 20px;color: #666;font-size: 15px;text-decoration: line-through;overflow: hidden;">Giá:  ${formatPrice(arrProducts[j].price)}</div>
+                <div class="product-card__prices">Giá KM: <span style="font-size: 22px;font-weight: 600;color: #000;">${formatPrice(arrProducts[j].discount)}<span></div>
                 <div class="product-card__buttons"><button class="btn btn-primary product-card__addtocart"
                         type="button">Add To
                         Cart</button> <button
@@ -546,22 +548,9 @@
                 </div>
             </div>
         </div>
-    </div>`;
-
-
-                        if (countProduct === 2) { countProduct = 0; }
-                        countProduct++;
-                        if (countProduct === 1) {
-                            $("#item-category-" + i).append(`
-                            <div class="block-products-carousel__column" id="test-${data[i]._id}-${i}-${j}">
-                                ${stringProduct}
+    </div>
                             </div>
                             `);
-                        }
-
-                        if (countProduct === 2) {
-                            $("#test-" + data[i]._id + "-" + i + "-" + j).append(`${stringProduct}`);
-                        }
                     }
                 }
             },
@@ -569,5 +558,9 @@
                 console.log(err);
             },
         });
+    }
+    function formatPrice(value) {
+        value = value.toLocaleString('vi', { style: 'currency', currency: 'VND' });
+        return value
     }
 </script>
