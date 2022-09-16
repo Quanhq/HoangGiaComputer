@@ -12,7 +12,8 @@
                                 width="6px" height="9px">
                                 <use xlink:href="/images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg></li>
-                        <li class="breadcrumb-item active" aria-current="page">Brandix Screwdriver SCREW1500ACC
+                        <li class="breadcrumb-item active" aria-current="page" id="productNameLink">Brandix Screwdriver
+                            SCREW1500ACC
                         </li>
                     </ol>
                 </nav>
@@ -136,63 +137,42 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="product__rating-legend"><a href="#">7 Reviews</a><span>/</span><a href="#">Write
-                                    A Review</a></div>
+                            <div class="product__rating-legend"><a href="#" id="text-reviews"></a></div>
                         </div>
-                        <div class="product__description">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Curabitur ornare, mi in ornare elementum, libero nibh lacinia urna, quis
-                            convallis lorem erat at purus. Maecenas eu varius nisi.</div>
-                        <ul class="product__features">
+                        <div style="font-size: 14px;
+                        font-weight: 500;
+                        padding: 0;">
+                            Thông số sản phẩm
+
+                        </div>
+
+                        <div class="product__description" id="information2"></div>
+
+                        <!-- <ul class="product__features">
                             <li>Speed: 750 RPM</li>
                             <li>Power Source: Cordless-Electric</li>
                             <li>Battery Cell Type: Lithium</li>
                             <li>Voltage: 20 Volts</li>
                             <li>Battery Capacity: 2 Ah</li>
-                        </ul>
+                        </ul> -->
+
                         <ul class="product__meta">
-                            <li class="product__meta-availability">Availability: <span class="text-success">In
-                                    Stock</span></li>
-                            <li>Brand: <a href="#">Wakita</a></li>
-                            <li>SKU: 83690/32</li>
+                            <li class="product__meta-availability">Trạng Thái: <span class="text-success">Còn
+                                    Hàng</span></li>
+
                         </ul>
-                    </div><!-- .product__info / end -->
-                    <!-- .product__sidebar -->
+                    </div>
                     <div class="product__sidebar">
-                        <div class="product__availability">Availability: <span class="text-success">In
-                                Stock</span></div>
-                        <div class="product__prices">$1,499.00</div><!-- .product__options -->
+                        <div class="product__availability">Trạng Thái: <span class="text-success">Còn Hàng</span></div>
+                        <div class="product__prices" id="product-pricing"
+                            style="text-decoration-line:line-through;height: 20px;color: #666;font-size: 15px;text-decoration: line-through;overflow: hidden;">
+                            $1,499.00</div>
+                        <div class="product__prices" id="product-discount"
+                            style="font-size: 20px;font-weight: 600;color: #000;"> </div>
                         <form class="product__options">
-                            <div class="form-group product__option"><label class="product__option-label">Color</label>
-                                <div class="input-radio-color">
-                                    <div class="input-radio-color__list"><label
-                                            class="input-radio-color__item input-radio-color__item--white"
-                                            style="color: #fff;" data-toggle="tooltip" title="White"><input type="radio"
-                                                name="color"> <span></span></label> <label
-                                            class="input-radio-color__item" style="color: #ffd333;"
-                                            data-toggle="tooltip" title="Yellow"><input type="radio" name="color">
-                                            <span></span></label> <label class="input-radio-color__item"
-                                            style="color: #ff4040;" data-toggle="tooltip" title="Red"><input
-                                                type="radio" name="color">
-                                            <span></span></label> <label
-                                            class="input-radio-color__item input-radio-color__item--disabled"
-                                            style="color: #4080ff;" data-toggle="tooltip" title="Blue"><input
-                                                type="radio" name="color" disabled="disabled">
-                                            <span></span></label></div>
-                                </div>
-                            </div>
-                            <div class="form-group product__option"><label
-                                    class="product__option-label">Material</label>
-                                <div class="input-radio-label">
-                                    <div class="input-radio-label__list"><label><input type="radio" name="material">
-                                            <span>Metal</span></label> <label><input type="radio" name="material">
-                                            <span>Wood</span></label>
-                                        <label><input type="radio" name="material" disabled="disabled">
-                                            <span>Plastic</span></label>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <div class="form-group product__option"><label class="product__option-label"
-                                    for="product-quantity">Quantity</label>
+                                    for="product-quantity">Số Lượng</label>
                                 <div class="product__actions">
                                     <div class="product__actions-item">
                                         <div class="input-number product__quantity"><input id="product-quantity"
@@ -209,40 +189,21 @@
                                             data-toggle="tooltip" title="Wishlist"><svg width="16px" height="16px">
                                                 <use xlink:href="/images/sprite.svg#wishlist-16"></use>
                                             </svg></button></div>
-                                    <div class="product__actions-item product__actions-item--compare"><button
-                                            type="button" class="btn btn-secondary btn-svg-icon btn-lg"
-                                            data-toggle="tooltip" title="Compare"><svg width="16px" height="16px">
-                                                <use xlink:href="/images/sprite.svg#compare-16"></use>
-                                            </svg></button></div>
+                                 
                                 </div>
                             </div>
-                        </form><!-- .product__options / end -->
-                    </div><!-- .product__end -->
-                    <div class="product__footer">
-                        <div class="product__tags tags">
-                            <div class="tags__list"><a href="#">Mounts</a> <a href="#">Electrodes</a> <a
-                                    href="#">Chainsaws</a></div>
-                        </div>
-                        <div class="product__share-links share-links">
-                            <ul class="share-links__list">
-                                <li class="share-links__item share-links__item--type--like"><a href="#">Like</a>
-                                </li>
-                                <li class="share-links__item share-links__item--type--tweet"><a href="#">Tweet</a></li>
-                                <li class="share-links__item share-links__item--type--pin"><a href="#">Pin
-                                        It</a></li>
-                                <li class="share-links__item share-links__item--type--counter"><a href="#">4K</a></li>
-                            </ul>
-                        </div>
+                        </form>
                     </div>
+              
                 </div>
             </div>
             <div class="product-tabs">
                 <div class="product-tabs__list"><a href="#tab-description"
-                        class="product-tabs__item product-tabs__item--active">Description</a> <a
-                        href="#tab-specification" class="product-tabs__item">Specification</a></div>
+                        class="product-tabs__item product-tabs__item--active">Mô Tả</a> <a
+                        href="#tab-specification" class="product-tabs__item">Thông Số Kỹ Thuật</a></div>
                 <div class="product-tabs__content">
                     <div class="product-tabs__pane product-tabs__pane--active" id="tab-description">
-                        <div class="typography">
+                        <div class="typography" id="product-description">
                             <h3>Product Full Description</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum, diam
                                 non iaculis finibus, ipsum arcu sollicitudin dolor, ut cursus sapien sem sed
@@ -270,8 +231,8 @@
                         </div>
                     </div>
                     <div class="product-tabs__pane" id="tab-specification">
-                        <div class="spec">
-                            <h3 class="spec__header">Specification</h3>
+                        <div class="spec" id="product-information">
+                       
                             <div class="spec__section">
                                 <h4 class="spec__section-title">General</h4>
                                 <div class="spec__row">
@@ -2516,10 +2477,11 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        getProductDetail()
+    // $(document).ready(function () {
+    //     getProductDetail()
 
-    })
+    // })
+    getProductDetail()
 
     function getProductDetail() {
         let selectProduct = getDataURL('product') || ''
@@ -2532,18 +2494,16 @@
 
 
                 let product = data[0]
-                // let pricing
-                // let categoryName = product.categoryName
-                // $('#name-product').html(product.productName)
-                // $('#orgin-product').html(product.origin)
-                // $('#color-product').html(product.color)
-                // $('#category-product').html(product.categoryName)
-                // $('#thinkness-product').html(product.thickness)
-
-                // $('#descrip-product').html(product.describe)
-                // $('#descrip-name-product').html(product.productName)
-                // $('#descrip-image-product').attr("src", "/images/product/" + product.image[0]);
-
+                let pricing
+                let categoryName = product.categoryName
+                $('#name-product').html(product.productName)
+                $('#productNameLink').html(product.productName)
+                $('#information2').html(product.information2)
+                $('#product-pricing').html('Giá : '+formatPrice(product.price))
+                $('#product-discount').html('Giá KM : '+formatPrice(product.discount))
+                $('#text-reviews').html(Math.floor(Math.random() * 100)+ ' Reviews')
+                $('#product-description').html(product.describe)
+                $('#product-information').html(product.information)
 
                 let arrImg = product.image
                 $('#product-image').empty()
@@ -2551,7 +2511,7 @@
 
                 for (let i = 0; i < arrImg.length; i++) {
                     $('#product-image').append(`<a href="/images/product/${arrImg[i]}" target="_blank"><img style="width:100%;" src="/images/product/${arrImg[i]}" alt=""> </a>`)
-                    $('#product-carousel').append(`<a href="#" class="product-gallery__carousel-item"><img style="width:100%;" class="product-gallery__carousel-image" src="/images/product/${arrImg[i]}" alt=""> </a>`)
+                    $('#product-carousel').append(`<a href="#" class="product-gallery__carousel-item"><img style="width:100%;    height: 75px;" class="product-gallery__carousel-image" src="/images/product/${arrImg[i]}" alt=""> </a>`)
                 }
                 // getProductRelate(categoryName)
             },
@@ -2599,6 +2559,14 @@
     function getDataURL(name) {
         if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
             return decodeURIComponent(name[1]);
+    }
+    function formatTagul(string) {
+        string = string.replace("<ul>", '').replace("</ul>", '')
+        return string
+    }
+    function formatPrice(value) {
+        value = value.toLocaleString('vi', { style: 'currency', currency: 'VND' });
+        return value
     }
 
 </script>
