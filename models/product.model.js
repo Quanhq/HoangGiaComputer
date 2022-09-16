@@ -11,6 +11,7 @@ var product = new mongoose.Schema({
   describe: {type: String},
   dateCreate: {type: String},
   information: {type: String},
+  information2: {type: String},
 });
 
 mongoose.model("Product", product);

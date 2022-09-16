@@ -45,6 +45,7 @@ router.post(
     product.price = req.body.price;
     product.discount = req.body.discount;
     product.information = req.body.information;
+    product.information2 = req.body.information2;
     product.describe = req.body.describe;
     product.image = arrayImage;
     product.dateCreate = req.body.dateCreate;
@@ -63,6 +64,7 @@ router.post("/admin/product/edit-product", async (req, res) => {
         price: req.body.price,
         discount: req.body.discount,
         information: req.body.information,
+        information2: req.body.information2,
         describe: req.body.describe,
         dateCreate: req.body.dateCreate,
       },

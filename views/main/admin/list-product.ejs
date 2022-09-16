@@ -68,6 +68,14 @@
 						<input id="add-discount-product" name="discount" type="number" class="form-control" required>
 					</div>
 
+					
+
+					<div class="form-group">
+						<label>Thông Số Sản Phẩm</label>
+						<textarea name="information2" id="editor-information2"></textarea>
+					</div>
+
+
 					<div class="form-group">
 						<label>Thông Số Kỹ Thuật</label>
 						<textarea name="information" id="editor-information"></textarea>
@@ -130,6 +138,11 @@
 					</div>
 
 					<div class="form-group">
+						<label>Thông Số sản Phẩm</label>
+						<textarea name="information2" id="edit-editor-information2"></textarea>
+					</div>
+
+					<div class="form-group">
 						<label>Thông Số Kỹ Thuật</label>
 						<textarea name="information" id="edit-editor-information"></textarea>
 					</div>
@@ -187,6 +200,7 @@
 	let valueDescription
 	let valueEditInformation
 	let valueEditdescription
+	let valueEditInformation2
 
 	ClassicEditor
 		.create(document.querySelector('#editor'))
@@ -198,6 +212,14 @@
 
 	ClassicEditor
 		.create(document.querySelector('#editor-information'))
+		.then(editor => {
+		})
+		.catch(error => {
+			console.error(error);
+		});
+
+		ClassicEditor
+		.create(document.querySelector('#editor-information2'))
 		.then(editor => {
 		})
 		.catch(error => {
@@ -217,6 +239,15 @@
 		.create(document.querySelector('#edit-editor-information'))
 		.then(editor => {
 			valueEditInformation = editor
+		})
+		.catch(error => {
+			console.error(error);
+		});
+
+		ClassicEditor
+		.create(document.querySelector('#edit-editor-information2'))
+		.then(editor => {
+			valueEditInformation2 = editor
 		})
 		.catch(error => {
 			console.error(error);
@@ -328,6 +359,7 @@
 					$('#edit-box-image').append(`<img src="/images/product/${data.image[i]}" height="150">`)
 				}
 				valueEditInformation.setData(data.information);
+				valueEditInformation2.setData(data.information2);
 				valueEditdescription.setData(data.describe);
 
 			},
