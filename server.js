@@ -26,6 +26,7 @@ const loginController = require('./controllers/backend/loginController');
 const homePageController = require('./controllers/fontend/homePageController');
 const allProductController = require('./controllers/fontend/allProductController');
 const detailProductController = require('./controllers/fontend/detailProductController');
+const cartController = require('./controllers/fontend/cartController');
 const middleware = require('./middleware');
 const userController = require('./controllers/fontend/userController');
 
@@ -57,5 +58,6 @@ app.use('/', categoryController);
 app.use('/', productController);
 app.use('/', allProductController);
 app.use('/', detailProductController);
+app.use('/', cartController);
 app.use('/', userController);
 

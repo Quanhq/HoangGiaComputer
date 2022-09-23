@@ -4,15 +4,12 @@
             <div class="page-header__breadcrumb">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a> <svg class="breadcrumb-arrow"
-                                width="6px" height="9px">
-                                <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
-                            </svg></li>
-                        <li class="breadcrumb-item"><a href="#">Breadcrumb</a> <svg class="breadcrumb-arrow" width="6px"
+                        <li class="breadcrumb-item"><a href="/">Trang Chủ</a> <svg class="breadcrumb-arrow" width="6px"
                                 height="9px">
                                 <use xlink:href="images/sprite.svg#arrow-rounded-right-6x9"></use>
                             </svg></li>
-                        <li class="breadcrumb-item active" aria-current="page" id="category-select-link">Screwdrivers</li>
+
+                        <li class="breadcrumb-item active" aria-current="page" id="category-select-link"></li>
                     </ol>
                 </nav>
             </div>
@@ -151,7 +148,7 @@
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar"
                             data-with-features="false">
                             <div class="products-list__body" id="list-product">
-                          
+
                             </div>
                         </div>
                         <div class="products-view__pagination">
@@ -199,10 +196,10 @@
                 for (let i = 0; i < data.length; i++) {
                     if (Number(data[i].price) === 0) {
                         textPrice = "Liên Hệ"
-                        textPriceDiscount =  "Liên Hệ"
+                        textPriceDiscount = "Liên Hệ"
                     } else {
-                        textPrice = formatPrice(data[i].price) 
-                        textPriceDiscount = formatPrice(data[i].discount) 
+                        textPrice = formatPrice(data[i].price)
+                        textPriceDiscount = formatPrice(data[i].discount)
                     }
 
                     $('#list-product').append(`
@@ -332,18 +329,7 @@
                     class="btn btn-primary product-card__addtocart" type="button">Add To
                     Cart</button> <button
                     class="btn btn-secondary product-card__addtocart product-card__addtocart--list"
-                    type="button">Add To Cart</button> <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                    type="button"><svg width="16px" height="16px">
-                        <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                    </svg> <span
-                        class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button>
-                <button
-                    class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare"
-                    type="button"><svg width="16px" height="16px">
-                        <use xlink:href="images/sprite.svg#compare-16"></use>
-                    </svg> <span
-                        class="fake-svg-icon fake-svg-icon--compare-16"></span></button>
+                    type="button">Add To Cart</button> 
             </div>
         </div>
     </div>

@@ -41,8 +41,8 @@
                             </svg>
                         </div>
                         <div class="block-features__content">
-                            <div class="block-features__title">Free Shipping</div>
-                            <div class="block-features__subtitle">For orders from $50</div>
+                            <div class="block-features__title">Miễn Phí Giao Hàng</div>
+                            <div class="block-features__subtitle">Đối với đơn hàng trên 3.000.000vnđ</div>
                         </div>
                     </div>
                     <div class="block-features__divider"></div>
@@ -53,8 +53,8 @@
                             </svg>
                         </div>
                         <div class="block-features__content">
-                            <div class="block-features__title">Support 24/7</div>
-                            <div class="block-features__subtitle">Call us anytime</div>
+                            <div class="block-features__title">Hỗ Trợ 24/7</div>
+                            <div class="block-features__subtitle">Gọi cho chúng tối bất cứ lúc nào</div>
                         </div>
                     </div>
                     <div class="block-features__divider"></div>
@@ -65,8 +65,8 @@
                             </svg>
                         </div>
                         <div class="block-features__content">
-                            <div class="block-features__title">100% Safety</div>
-                            <div class="block-features__subtitle">Only secure payments</div>
+                            <div class="block-features__title">An Toàn 100%</div>
+                            <div class="block-features__subtitle">Khi đặt hàng</div>
                         </div>
                     </div>
                     <div class="block-features__divider"></div>
@@ -77,26 +77,21 @@
                             </svg>
                         </div>
                         <div class="block-features__content">
-                            <div class="block-features__title">Hot Offers</div>
-                            <div class="block-features__subtitle">Discounts up to 90%</div>
+                            <div class="block-features__title">Ưu Đãi</div>
+                            <div class="block-features__subtitle">Giảm giá lên đến 70%</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="box-list-product-by-category"></div>
+        <div id="box-list-product-by-category">
 
-        <div class="block block-banner">
-            <div class="container">
-                <a href="#" class="block-banner__body">
-                    <div class="block-banner__image block-banner__image--desktop"
-                        style="background-image: url('images/banners/banner-1.jpg')"></div>
-                    <div class="block-banner__image block-banner__image--mobile"
-                        style="background-image: url('images/banners/banner-1-mobile.jpg')"></div>
-                </a>
-            </div>
+
+
+
+
         </div>
-        <div class="block block-posts block-posts--layout--grid-nl" data-layout="grid-nl">
+        <!-- <div class="block block-posts block-posts--layout--grid-nl" data-layout="grid-nl">
             <div class="container">
                 <div class="block-header">
                     <h3 class="block-header__title">Latest News</h3>
@@ -345,7 +340,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="block block-brands">
             <div class="container">
                 <div class="block-brands__slider">
@@ -419,13 +414,40 @@
     </div>
 
 `);
+                    if (i === 1) {
+                        $("#box-list-product-by-category").append(`
+                    <div class="block block-banner">
+            <div class="container">
+                <a href="#" class="block-banner__body">
+                    <div class="block-banner__image block-banner__image--desktop"
+                        style="background-image: url('images/banners/banner-1.jpg')"></div>
+                    <div class="block-banner__image block-banner__image--mobile"
+                        style="background-image: url('images/banners/banner-1-mobile.jpg')"></div>
+                </a>
+            </div>
+        </div>
+                    `)
+                    }
+
+                    if (i === 3) {
+                        $("#box-list-product-by-category").append(`
+                    <div class="block block-banner">
+            <div class="container">
+                <a href="#" class="block-banner__body">
+                    <div class="block-banner__image block-banner__image--desktop"
+                        style="background-image: url('images/banners/banner-2.jpg')"></div>
+                    <div class="block-banner__image block-banner__image--mobile"
+                        style="background-image: url('images/banners/banner-1-mobile.jpg')"></div>
+                </a>
+            </div>
+        </div>
+                    `)
+                    }
                     for (let j = 0; j < arrProducts.length; j++) {
                         $("#item-category-" + i).append(`
                             <div class="block-products-carousel__column">
                                 <div class="block-products-carousel__cell">
-        <div class="product-card"><button class="product-card__quickview" type="button"><svg width="16px" height="16px">
-                    <use xlink:href="images/sprite.svg#quickview-16"></use>
-                </svg> <span class="fake-svg-icon"></span></button>
+        <div class="product-card">
             <div class="product-card__badges-list">
             </div>
             <div class="product-card__image"><a href="/detail-product/?product=${arrProducts[j]._id}"><img src="/images/product/${arrProducts[j].image[0]}" alt=""></a>
@@ -536,15 +558,7 @@
                         type="button">Add To
                         Cart</button> <button
                         class="btn btn-secondary product-card__addtocart product-card__addtocart--list"
-                        type="button">Add To Cart</button> <button
-                        class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist"
-                        type="button"><svg width="16px" height="16px">
-                            <use xlink:href="images/sprite.svg#wishlist-16"></use>
-                        </svg> <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span></button>
-                    <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare"
-                        type="button"><svg width="16px" height="16px">
-                            <use xlink:href="images/sprite.svg#compare-16"></use>
-                        </svg> <span class="fake-svg-icon fake-svg-icon--compare-16"></span></button>
+                        type="button">Đặt mua ngay</button> 
                 </div>
             </div>
         </div>
