@@ -373,9 +373,10 @@
     </div>
 </div>
 <script>
-    // $(document).ready(function () {
-    // })
-    getAllProductByCategory();
+    $(document).ready(function () {
+        getAllProductByCategory();
+    })
+
     function getAllProductByCategory() {
         let countProduct = 0;
         $.ajax({
@@ -384,6 +385,7 @@
             data: {},
             success: function (data) {
                 $("#box-list-product-by-category").empty();
+                console.log(data);
                 for (let i = 0; i < data.length; i++) {
                     let arrProducts = data[i].product;
                     $("#box-list-product-by-category").append(`

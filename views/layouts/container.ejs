@@ -8,7 +8,7 @@
     <title>HoangGia - Hoang Gia Computer</title>
     <link rel="icon" type="image/png" href="images/hoanggialogo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
-    <link rel="stylesheet" href="/vendor/bootstrap-4.2.1//css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-4.2.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css"> -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="/vendor/jquery-3.3.1/jquery.min.js"></script>
@@ -19,7 +19,7 @@
     <script src="/js/main.js"></script>
     <script src="/vendor/svg4everybody-2.1.9/svg4everybody.min.js"></script>
     <script>svg4everybody();</script>
-    <link rel="stylesheet" href="/vendor/fontawesome-5.6.1//css/all.min.css">
+    <link rel="stylesheet" href="/vendor/fontawesome-5.6.1/css/all.min.css">
     <link rel="stylesheet" href="/fonts/stroyka/stroyka.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-6"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-97489509-6');</script>
@@ -57,7 +57,6 @@
 
     $(document).ready(function () {
 
-        //Pour afficher le bouton 
         var offset = 120;
         var duration = 500;
         $(window).scroll(function () {
@@ -68,38 +67,12 @@
             }
         });
 
-        // //Pour le smoth scroll
-        // $(function () {
-        //     $('a[href*=#]:not([href=#])').click(function () {
-        //         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        //             var target = $(this.hash);
-        //             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        //             if (target.length) {
-        //                 $('html,body').animate({
-        //                     scrollTop: target.offset().top
-        //                 }, 500);
-        //                 return false;
-        //             }
-        //         }
-        //     });
-        // });
-        var head = document.getElementsByTagName('HEAD')[0];
-
-        var link = document.createElement('link');
-
-        link.rel = 'stylesheet';
-
-        link.type = 'text/css';
-
-        link.href = '/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css';
-
-        head.appendChild(link);
     });
 
 </script>
-<!-- <link rel="stylesheet" href="/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css"> -->
+<link rel="stylesheet" href="/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css">
 
-<!-- <style>
+<style>
         .phone-call {
             position: fixed;
             bottom: 40px;
@@ -236,6 +209,6 @@
         .back-to-top:hover {
             background-color: rgba(135, 135, 135, 0.50);
         }
-    </style> -->
+    </style>
 
 </html>

@@ -17,7 +17,7 @@ function _verifyLogIn (req, res, next){
         req.user = tokenVerify;
         next()
     }else{
-        res.render("main/login",{ title: 'Log In',layout:'layouts/containerLogin'});
+        res.render("main/admin/login",{ title: 'Log In',layout:'layouts/containerLogin'});
     }
   }
 
