@@ -235,12 +235,9 @@
 </div>
 
 <script>
-    // $(document).ready(function () {
-    //     getProductDetail()
-
-    // })
-    getProductDetail()
-
+    $(document).ready(function () {
+        getProductDetail()
+    })
     function getProductDetail() {
         let selectProduct = getDataURL('product') || ''
         $.ajax({
@@ -430,7 +427,6 @@
 
                 }
                 reInitMain()
-
             },
             error: function (err) {
                 console.log(err);
