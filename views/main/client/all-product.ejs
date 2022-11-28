@@ -129,8 +129,10 @@
                                                 </svg></button></div>
                                     </div>
                                 </div>
-                                <div class="view-options__legend">Showing 6 of 98 products</div>
-                                <div class="view-options__divider"></div>
+                                <div class="view-options__legend">Hiển thị <span id="current-product"> 0</span> trên
+                                    <span id="total-product"> 0</span>
+                                    sản phẩm</div>
+                                <!-- <div class="view-options__divider"></div>
                                 <div class="view-options__control"><label for="">Sort By</label>
                                     <div><select class="form-control form-control-sm" name="" id="">
                                             <option value="">Default</option>
@@ -142,7 +144,7 @@
                                             <option value="">12</option>
                                             <option value="">24</option>
                                         </select></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="products-view__list products-list" data-layout="grid-3-sidebar"
@@ -152,18 +154,18 @@
                             </div>
                         </div>
                         <div class="products-view__pagination">
-                            <ul class="pagination justify-content-center">
+                            <ul class="pagination justify-content-center" id="box-pagination">
                                 <li class="page-item disabled"><a class="page-link page-link--with-arrow" href="#"
                                         aria-label="Previous"><svg class="page-link__arrow page-link__arrow--left"
                                             aria-hidden="true" width="8px" height="13px">
                                             <use xlink:href="images/sprite.svg#arrow-rounded-left-8x13"></use>
                                         </svg></a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item item-number-page"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item active"><a class="page-link" href="#">2 <span
                                             class="sr-only">(current)</span></a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link page-link--with-arrow" href="#"
-                                        aria-label="Next"><svg class="page-link__arrow page-link__arrow--right"
+                                <li class="page-item item-number-page"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item item-number-page"><a class="page-link page-link--with-arrow"
+                                        href="#" aria-label="Next"><svg class="page-link__arrow page-link__arrow--right"
                                             aria-hidden="true" width="8px" height="13px">
                                             <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>
                                         </svg></a></li>
@@ -175,24 +177,32 @@
         </div>
     </div>
 </div>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<script src="/js/main.js"></script>
+
+<script src="/vendor/jquery-3.3.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         getAllProduct()
     })
     function getAllProduct() {
         let selectCategory = getDataURL('category') || ''
+        let page = getDataURL('page') || '1'
         $.ajax({
             type: 'GET',
             url: '/all-product-by-category',
-            data: { categoryName: selectCategory },
-            success: function (data) {
+            data: { categoryName: selectCategory, page: page },
+            success: function (result) {
                 $('#category-select').html(selectCategory)
                 $('#category-select-link').html(selectCategory)
                 $('#list-product').empty()
-
                 let textPrice = ''
                 let textPriceDiscount = ''
+                let data = result[0]
+                let totalPost = result[1]
+                $('#total-product').html(totalPost)
+                $('#current-product').html(data.length)
+
                 for (let i = 0; i < data.length; i++) {
                     if (Number(data[i].price) === 0) {
                         textPrice = "Liên Hệ"
@@ -205,14 +215,12 @@
                     $('#list-product').append(`
 
                     <div class="products-list__item">
-    <div class="product-card"><button class="product-card__quickview" type="button"><svg
-                width="16px" height="16px">
-                <use xlink:href="images/sprite.svg#quickview-16"></use>
-            </svg> <span class="fake-svg-icon"></span></button>
+    <div class="product-card">
+     
         <div class="product-card__image"><a href="/detail-product/?product=${data[i]._id}"><img
                     src="/images/product/${data[i].image[0]}" alt=""></a></div>
         <div class="product-card__info">
-            <div class="product-card__name" style="overflow: hidden;"><a href="/detail-product/?product=${data[i]._id}">${data[i].productName}</a></div>
+            <div class="product-card__name" style="overflow: hidden;"><a title="${data[i].productName}" href="/detail-product/?product=${data[i]._id}">${data[i].productName}</a></div>
             <div class="product-card__rating">
                 <div class="rating">
                     <div class="rating__body"><svg
@@ -326,10 +334,9 @@
             <div class="product-card__prices" style="text-decoration-line:line-through;height: 20px;color: #666;font-size: 15px;text-decoration: line-through;overflow: hidden;">Giá : ${textPrice}</div>
             <div class="product-card__prices" style="font-size: 20px;font-weight: 600;color: #000;">Giá KM : ${textPriceDiscount}</div>
             <div class="product-card__buttons"><button
-                    class="btn btn-primary product-card__addtocart" type="button">Add To
-                    Cart</button> <button
+                    class="btn btn-primary product-card__addtocart" type="button">Đặt mua ngay</button> <button
                     class="btn btn-secondary product-card__addtocart product-card__addtocart--list"
-                    type="button">Add To Cart</button> 
+                    type="button">Đặt mua ngay</button> 
             </div>
         </div>
     </div>
@@ -339,6 +346,97 @@
 
 
 
+                    page = page * 1
+                    $('#box-pagination').html('')
+                    totalNews = Math.ceil(totalPost / 12)
+                    if (page > 1) {
+                        $('#box-pagination').append(`
+
+
+                    <li  onclick="checkDataPagination(${page * 1 - 1});" class="page-item disabled"><a class="page-link page-link--with-arrow" href="#"
+                                        aria-label="Previous"><svg class="page-link__arrow page-link__arrow--left"
+                                            aria-hidden="true" width="8px" height="13px">
+                                            <use xlink:href="images/sprite.svg#arrow-rounded-left-8x13"></use>
+                                        </svg></a></li>`)
+                    }
+                    if (totalNews <= 6) {
+                        for (let index = 1; index <= totalNews; index++) {
+                            $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`)
+                        }
+                    }
+                    if (totalNews > 6) {
+
+                        for (let index = 1; index <= totalNews; index++) {
+                            if (page <= 2) {
+                                if (index <= 3) { $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`) }
+                                if (index === totalNews) {
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${totalNews});" class="page-item item-number-page"><span class="page-link">${totalNews}</span></li>`)
+                                }
+                            }
+                            if (page == 3) {
+                                if (index <= 4) { $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`) }
+                                if (index === totalNews) {
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${totalNews});" class="page-item item-number-page"><span class="page-link">${totalNews}</span></li>`)
+                                }
+                            }
+                            if (page - 1 > totalNews - totalNews + 2 && page + 1 < totalNews - 1) {
+                                if (index === totalNews - totalNews + 1) {
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`)
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                }
+                                if (index == page - 1 || index == page || index == page + 1) { $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`) }
+                                if (index === totalNews) {
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${totalNews});" class="page-item item-number-page"><span class="page-link">${totalNews}</span></li>`)
+                                }
+                            }
+                            if (page == totalNews - 2) {
+                                if (index === totalNews - totalNews + 1) {
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`)
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                }
+                                if (index == page - 1 || index == page || index == page + 1 || index == page + 2) { $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`) }
+                            }
+                            if (page <= totalNews && page > totalNews - 2) {
+                                if (index === totalNews - totalNews + 1) {
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`)
+                                    $('#box-pagination').append(`<li class="page-item item-number-page"><span class="page-link">...</span></li>`)
+                                }
+                                if (index >= totalNews - 2) {
+                                    $('#box-pagination').append(`<li onclick="checkDataPagination(${index});" class="page-item item-number-page"><span class="page-link">${index}</span></li>`)
+
+                                }
+
+                            }
+
+                        }
+                    }
+                    if (page < totalNews) {
+
+                        $('#box-pagination').append(`<li onclick="checkDataPagination(${page * 1 + 1});" class="page-item item-number-page"><a class="page-link page-link--with-arrow" href="#"
+                                        aria-label="Next"><svg class="page-link__arrow page-link__arrow--right"
+                                            aria-hidden="true" width="8px" height="13px">
+                                            <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>
+                                        </svg></a></li>`)
+                    }
+
+
+
+
+
+                    let elementNumberPage = document.querySelectorAll('.item-number-page')
+                    for (let index = 0; index < elementNumberPage.length; index++) {
+                        let element = elementNumberPage[index]
+                        let checkelement = $(element).find('span')[0].innerHTML
+                        console.log(checkelement, page);
+                        if (checkelement === String(page)) {
+                            elementNumberPage[index].classList.add("active");
+                        }
+                    }
+
+
                 }
                 reInitMain()
             },
@@ -346,6 +444,12 @@
                 console.log(err);
             }
         });
+    }
+    function checkDataPagination(value) {
+        // $('html, body').animate({ scrollTop: $("#section-box-news").offset().top }, 1000);
+        let category = getDataURL('category') || ''
+        window.history.pushState({}, '', location.origin + location.pathname + '?category=' + category + '&page=' + value);
+        getAllProduct()
     }
     function getDataURL(name) {
         if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
