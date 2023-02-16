@@ -385,7 +385,6 @@
             data: {},
             success: function (data) {
                 $("#box-list-product-by-category").empty();
-                console.log(data);
                 for (let i = 0; i < data.length; i++) {
                     let arrProducts = data[i].product;
                     $("#box-list-product-by-category").append(`
@@ -395,7 +394,7 @@
                 <h3 class="block-header__title">${data[i]._id}</h3>
                 <div class="block-header__divider"></div>
                 <ul class="block-header__groups-list">
-                    <li><a href="/category/?category=${data[i]._id}"><button type="button"  class="block-header__group">Xem tất cả</button></a></li>
+                    <li><a href="/category/?category=${data[i]._id}">Xem tất cả</a></li>
                 </ul>
                 <div class="block-header__arrows-list"><button
                     class="block-header__arrow block-header__arrow--left" type="button"><svg width="7px"
